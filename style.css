@@ -1,0 +1,406 @@
+/* ---------- RESET E VARIÁVEIS ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: #0b0e14;
+    --bg-card: #141a24;
+    --bg-input: #1e2634;
+    --text-primary: #e8edf5;
+    --text-secondary: #8a9bb5;
+    --accent: #7c3aed;
+    --accent-hover: #6d28d9;
+    --accent-glow: rgba(124, 58, 237, 0.35);
+    --cyan: #22d3ee;
+    --success: #34d399;
+    --warning: #fbbf24;
+    --danger: #f87171;
+    --radius: 12px;
+    --shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+    --transition: 0.25s ease;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* ---------- CARD PRINCIPAL ---------- */
+.container {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 36px 32px;
+    max-width: 560px;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(2px);
+    transition: var(--transition);
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+h1 span {
+    background: var(--accent);
+    font-size: 20px;
+    padding: 0 10px;
+    border-radius: 30px;
+}
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 28px;
+    border-left: 3px solid var(--accent);
+    padding-left: 14px;
+}
+
+/* ---------- CAMPO DA SENHA ---------- */
+.password-display {
+    position: relative;
+    background: var(--bg-input);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    padding: 4px 4px 4px 18px;
+    border: 1px solid transparent;
+    transition: border 0.2s;
+}
+.password-display:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+#senhaInput {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-primary);
+    font-size: 20px;
+    font-family: 'Fira Code', 'Cascadia Code', monospace;
+    letter-spacing: 1px;
+    padding: 14px 0;
+    min-width: 0;
+}
+#senhaInput::placeholder {
+    color: var(--text-secondary);
+    font-size: 15px;
+    letter-spacing: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.btn-icon {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 22px;
+    cursor: pointer;
+    padding: 10px 12px;
+    border-radius: 8px;
+    transition: var(--transition);
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-icon:hover {
+    background: rgba(255, 255, 255, 0.07);
+    color: var(--text-primary);
+}
+.btn-icon.copiar:hover {
+    color: var(--success);
+}
+
+/* ---------- MEDIDOR DE FORÇA ---------- */
+.strength-wrapper {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+.strength-bar {
+    flex: 1;
+    height: 6px;
+    background: var(--bg-input);
+    border-radius: 6px;
+    overflow: hidden;
+}
+.strength-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 6px;
+    transition: width 0.4s ease, background 0.4s ease;
+}
+#forcaLabel {
+    font-size: 13px;
+    font-weight: 600;
+    min-width: 60px;
+    text-align: right;
+    color: var(--text-secondary);
+}
+
+/* ---------- CONTROLES ---------- */
+.controles {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.linha-dupla {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.linha-dupla > div {
+    flex: 1;
+    min-width: 120px;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+    letter-spacing: 0.3px;
+}
+
+/* Slider */
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;
+    border-radius: 5px;
+    background: var(--bg-input);
+    outline: none;
+    transition: background 0.2s;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    box-shadow: 0 0 12px var(--accent-glow);
+    transition: 0.15s;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.12);
+    background: var(--accent-hover);
+}
+input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    border: none;
+}
+#tamanhoValor {
+    font-weight: 700;
+    color: var(--cyan);
+    font-size: 18px;
+    margin-left: 6px;
+}
+
+/* Checkboxes em grade */
+.opcoes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 16px;
+    margin-top: 4px;
+}
+.opcoes-grid label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+.opcoes-grid input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    accent-color: var(--accent);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* ---------- BOTÃO GERAR ---------- */
+.btn-gerar {
+    width: 100%;
+    padding: 15px;
+    font-size: 17px;
+    font-weight: 700;
+    border: none;
+    border-radius: var(--radius);
+    background: var(--accent);
+    color: #fff;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 10px;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.btn-gerar:hover {
+    background: var(--accent-hover);
+    transform: scale(1.01);
+    box-shadow: 0 0 28px var(--accent-glow);
+}
+.btn-gerar:active {
+    transform: scale(0.97);
+}
+
+/* ---------- HISTÓRICO ---------- */
+.historico {
+    margin-top: 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 18px;
+}
+.historico-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.historico-header h3 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+}
+#limparHistorico {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 13px;
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 6px;
+    transition: var(--transition);
+}
+#limparHistorico:hover {
+    background: rgba(248, 113, 113, 0.15);
+    color: var(--danger);
+}
+#listaHistorico {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    min-height: 32px;
+}
+.chip-senha {
+    background: var(--bg-input);
+    padding: 4px 14px 4px 16px;
+    border-radius: 30px;
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    animation: fadeIn 0.25s ease;
+}
+.chip-senha button {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 15px;
+    padding: 0 2px;
+    transition: var(--transition);
+}
+.chip-senha button:hover {
+    color: var(--success);
+}
+.vazio {
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-style: italic;
+}
+
+/* ---------- TOAST ---------- */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    padding: 12px 28px;
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: var(--shadow);
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateX(-50%) translateY(12px);
+    z-index: 999;
+}
+.toast.visivel {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ---------- ANIMAÇÕES ---------- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width: 480px) {
+    .container {
+        padding: 24px 18px;
+    }
+    h1 {
+        font-size: 21px;
+    }
+    #senhaInput {
+        font-size: 17px;
+        padding: 12px 0;
+    }
+    .opcoes-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 4px 10px;
+    }
+    .linha-dupla {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .btn-gerar {
+        font-size: 15px;
+        padding: 13px;
+    }
+}
