@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🔐 Gerador de Senhas Seguro</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- ========== CONTAINER PRINCIPAL ========== -->
+    <div class="container" role="main">
+
+        <h1>
+            <span>🔐</span> Gerador de Senhas
+        </h1>
+        <div class="subtitle">Seguro • Client-side • Crypto API</div>
+
+        <!-- DISPLAY DA SENHA -->
+        <div class="password-display">
+            <input type="text" id="senhaInput" placeholder="Clique em Gerar" readonly aria-label="Senha gerada" />
+            <button class="btn-icon" id="toggleVisibilidade" aria-label="Mostrar/ocultar senha" title="Mostrar/ocultar">👁️</button>
+            <button class="btn-icon copiar" id="copiarBtn" aria-label="Copiar senha" title="Copiar">📋</button>
+        </div>
+
+        <!-- MEDIDOR DE FORÇA -->
+        <div class="strength-wrapper">
+            <div class="strength-bar">
+                <div class="strength-fill" id="forcaBarra" style="width:0%;"></div>
+            </div>
+            <span id="forcaLabel">—</span>
+        </div>
+
+        <!-- CONTROLES -->
+        <div class="controles">
+
+            <div class="linha-dupla">
+                <div>
+                    <label for="tamanhoSlider">Comprimento: <span id="tamanhoValor">16</span></label>
+                    <input type="range" id="tamanhoSlider" min="8" max="64" value="16" step="1" />
+                </div>
+            </div>
+
+            <div>
+                <label>Incluir:</label>
+                <div class="opcoes-grid">
+                    <label><input type="checkbox" id="chkMaiusculas" checked /> A-Z</label>
+                    <label><input type="checkbox" id="chkMinusculas" checked /> a-z</label>
+                    <label><input type="checkbox" id="chkNumeros" checked /> 0-9</label>
+                    <label><input type="checkbox" id="chkSimbolos" /> !@#$%^&*</label>
+                </div>
+            </div>
+
+            <button class="btn-gerar" id="gerarBtn">⟳ Gerar Senha</button>
+        </div>
+
+        <!-- HISTÓRICO -->
+        <div class="historico">
+            <div class="historico-header">
+                <h3>📜 Últimas geradas</h3>
+                <button id="limparHistorico">Limpar</button>
+            </div>
+            <div id="listaHistorico"></div>
+        </div>
+    </div>
+
+    <!-- TOAST (feedback copiar) -->
+    <div class="toast" id="toast"></div>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script src="main.js"></script>
+</body>
+</html>
